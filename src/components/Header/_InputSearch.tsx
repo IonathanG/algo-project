@@ -32,14 +32,25 @@ const InputField = styled.input`
 
     text-align: justify;
     letter-spacing: -0.02em;
+    color: ${({ theme }) => theme.color_Font_Main};
   }
+`;
+
+const Icon = styled.img`
+  width: 18px;
+  height: 18px;
+  position: absolute;
+  top: 13px;
+  left: 26px;
+  z-index: 1;
 `;
 
 const Input = () => {
   const [search, setSearch] = useState("");
 
   return (
-    <>
+    <div style={{ position: "relative" }}>
+      <Icon src="src/assets/Icon/search-normal.svg" alt="search-icon" />
       <InputField
         name="search"
         type="text"
@@ -48,7 +59,7 @@ const Input = () => {
         onChange={(e) => setSearch(e.target.value)}
         required
       />
-    </>
+    </div>
   );
 };
 

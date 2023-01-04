@@ -1,22 +1,36 @@
-import React from "react";
 import styled from "styled-components";
 
 const Header = styled.div`
   display: flex;
-  align-items: flex-start;
-  gap: 10px;
+  align-items: center;
+  gap: 25px;
 
-  padding: 10px 20px 5px 20px;
-  font-size: 14px;
+  span {
+    font-family: "Plus Jakarta Sans", sans-serif;
+    font-style: normal;
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 150%;
+
+    text-align: justify;
+    letter-spacing: -0.02em;
+
+    color: ${({ theme }) => theme.color_Font_Tertiary};
+  }
 `;
 
-// const UserAvatar = styled.img`
-//   width: 45px;
-//   height: auto;
-// `;
+const Logo = styled.img`
+  width: 62px;
+  height: 62px;
+`;
 
 const NavbarHeader = () => {
-  return <Header>NavbarHeader</Header>;
+  return (
+    <Header>
+      <Logo src="src/assets/Image/Logo/Logo.png" alt="logo" />
+      <span>filerrrr.</span>
+    </Header>
+  );
 };
 
 export default NavbarHeader;

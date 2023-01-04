@@ -9,8 +9,10 @@ export const LightTheme = {
   boxShadow_Main: "#F3F5F7",
 
   // Font Color
-  color_Font_Main: "rgb(68,68,68)",
-  color_Font_Light: "rgb(90,90,90)",
+  color_Font_Main: "#596780",
+  color_Font_Secondary: "#1a202c",
+  color_Font_Tertiary: "#000000",
+  color_Font_SubMenu: "#90A3BF",
 
   //Top Header
   background_Header: "rgb(255,255,255)",

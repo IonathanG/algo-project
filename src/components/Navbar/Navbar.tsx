@@ -1,7 +1,7 @@
-import React from "react";
 import styled from "styled-components";
 import NavbarHeader from "./_NavbarHeader";
 import NavigationMenu from "./_NavigationMenu";
+import Credits from "./_Credits";
 
 const NavbarContainer = styled.nav`
   width: 286px;
@@ -11,13 +11,15 @@ const NavbarContainer = styled.nav`
   top: 0;
   left: 0;
 
+  padding: 18px 16px 32px 16px;
+
   display: flex;
   flex-direction: column;
   gap: 20px;
+  position: relative;
 
   background-color: ${({ theme }) => theme.background_Secondary};
   border-right: 1px solid ${({ theme }) => theme.boxShadow_Main};
-  /* border-right: 1px solid black; */
 `;
 
 const Navbar = () => {
@@ -25,6 +27,7 @@ const Navbar = () => {
     <NavbarContainer>
       <NavbarHeader />
       <NavigationMenu />
+      <Credits />
     </NavbarContainer>
   );
 };

@@ -14,8 +14,14 @@ html {
 
 body {
   min-height: 100vh;  
-  font-family: 'Ubuntu', 'sans-serif';
- background-color: ${(props) => props.theme.background_MainSection};
+  color: ${({ theme }) => theme.color_Font_Main};
+  background-color: ${(props) => props.theme.background_MainSection};
+  
+  font-family: 'Plus Jakarta Sans', 'Ubuntu', 'sans-serif';
+  font-style: normal;
+
+  text-align: justify;
+  letter-spacing: -0.02em;
 }
 
 body,

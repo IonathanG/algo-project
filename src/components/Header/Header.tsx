@@ -26,7 +26,7 @@ const Right = styled.div`
   display: flex;
   align-items: center;
   gap: 5px;
-  background-color: bisque;
+  /* background-color: bisque; */
 `;
 
 const Header = () => {

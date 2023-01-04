@@ -13,7 +13,9 @@ declare module "styled-components" {
 
     // Font Color
     color_Font_Main: string;
-    color_Font_Light: string;
+    color_Font_Secondary: string;
+    color_Font_Tertiary: string;
+    color_Font_SubMenu: string;
 
     //Top Header
     background_Header: string;
