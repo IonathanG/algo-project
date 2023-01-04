@@ -7,7 +7,9 @@ declare module "styled-components" {
 
     // Main Section
     background_MainSection: string;
-    background_Container: string;
+    background_Secondary: string;
+
+    boxShadow_Main: string;
 
     // Font Color
     color_Font_Main: string;

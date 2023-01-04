@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const SectionPage = styled.section`
   min-height: 100vh;
-  width: 100%;
+  width: 100vw;
 
   background-color: ${({ theme }) => theme.background_MainSection};
   color: ${({ theme }) => theme.color_Font_Main};
@@ -15,7 +15,7 @@ export const SectionMain = styled.section`
   margin-left: 286px;
 
   /* width: 100%; */
-  background-color: ${({ theme }) => theme.background_MainSection};
+  /* background-color: ${({ theme }) => theme.background_MainSection}; */
   transition: 0.3s ease;
 `;
 
@@ -27,5 +27,5 @@ export const SectionContent = styled.section`
   /* margin-left: 286px; */
   padding: 37px 32px;
   transition: 0.3s ease;
-  background-color: bisque;
+  /* background-color: bisque; */
 `;

@@ -4,7 +4,9 @@ export const LightTheme = {
 
   // Main Section
   background_MainSection: "#F0F0F0",
-  background_Container: "#FFFFFF",
+  background_Secondary: "#FFFFFF",
+
+  boxShadow_Main: "#F3F5F7",
 
   // Font Color
   color_Font_Main: "rgb(68,68,68)",

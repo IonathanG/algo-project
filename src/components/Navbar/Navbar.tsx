@@ -15,7 +15,9 @@ const NavbarContainer = styled.nav`
   flex-direction: column;
   gap: 20px;
 
-  background-color: ${({ theme }) => theme.background_Container};
+  background-color: ${({ theme }) => theme.background_Secondary};
+  border-right: 1px solid ${({ theme }) => theme.boxShadow_Main};
+  /* border-right: 1px solid black; */
 `;
 
 const Navbar = () => {

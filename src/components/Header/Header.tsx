@@ -1,4 +1,3 @@
-import React from "react";
 import styled from "styled-components";
 import Input from "./_InputSearch";
 import User from "./_User";
@@ -8,16 +7,16 @@ const HeaderContainer = styled.header`
   top: 0;
   left: 286px;
 
-  width: 100%;
+  width: calc(100% - 286px);
   height: 80px;
   padding: 0px 32px;
 
   display: flex;
   align-items: center;
-  /* justify-content: space-between; */
+  justify-content: space-between;
 
-  background-color: ${({ theme }) => theme.background_Container};
-  /* border-bottom: 1px solid ${({ theme }) => theme.boxShadow_Navbar}; */
+  background-color: ${({ theme }) => theme.background_Secondary};
+  border-bottom: 1px solid ${({ theme }) => theme.boxShadow_Main};
   transition: 0.3s ease;
 `;
 
