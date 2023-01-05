@@ -11,6 +11,7 @@ const MenuContainer = styled.ul`
   margin-top: 50px;
 
   h2 {
+    margin: 0px 0px 10px 16px;
     font-style: normal;
     font-weight: 500;
     font-size: 14px;

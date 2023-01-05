@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const SectionPage = styled.section`
-  min-height: 100vh;
-  width: 100vw;
+  /* height: 100vh;
+  width: 100vw; */
 
   background-color: ${({ theme }) => theme.background_MainSection};
   color: ${({ theme }) => theme.color_Font_Main};
@@ -11,21 +11,11 @@ export const SectionPage = styled.section`
 `;
 
 export const SectionMain = styled.section`
-  // margin for Top Header height
+  // margin for Top Header height + Navbar
+  margin-top: 80px;
   margin-left: 286px;
 
-  /* width: 100%; */
-  /* background-color: ${({ theme }) => theme.background_MainSection}; */
-  transition: 0.3s ease;
-`;
-
-export const SectionContent = styled.section`
-  min-height: 100vh;
-  margin-top: 80px;
-
-  // margin for side Navbar
-  /* margin-left: 286px; */
   padding: 37px 32px;
   transition: 0.3s ease;
-  /* background-color: bisque; */
+  display: flex;
 `;

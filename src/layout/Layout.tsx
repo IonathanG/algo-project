@@ -1,5 +1,5 @@
 import { Outlet } from "react-router-dom";
-import { SectionPage, SectionMain, SectionContent } from "../shared/Styles";
+import { SectionPage, SectionMain } from "../shared/Styles";
 import Navbar from "../components/Navbar/Navbar";
 import Header from "../components/Header/Header";
 
@@ -7,16 +7,12 @@ const Layout = () => {
   return (
     <>
       <SectionPage>
-        {/* Side Navbar */}
+        {/* Side Navbar + Header*/}
         <Navbar />
-        {/* Main Section => Header + Main Content */}
+        <Header />
         <SectionMain>
-          {/* Top Header */}
-          <Header />
+          <Outlet />
           {/* Main Content */}
-          <SectionContent>
-            <Outlet />
-          </SectionContent>
         </SectionMain>
       </SectionPage>
     </>

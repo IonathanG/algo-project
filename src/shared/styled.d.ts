@@ -17,6 +17,8 @@ declare module "styled-components" {
     color_Font_Tertiary: string;
     color_Font_SubMenu: string;
 
+    color_CTA: string;
+
     //Top Header
     background_Header: string;
 

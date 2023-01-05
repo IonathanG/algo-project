@@ -16,7 +16,7 @@ const NavbarContainer = styled.nav`
   display: flex;
   flex-direction: column;
   gap: 20px;
-  position: relative;
+  /* position: relative; */
 
   background-color: ${({ theme }) => theme.background_Secondary};
   border-right: 1px solid ${({ theme }) => theme.boxShadow_Main};

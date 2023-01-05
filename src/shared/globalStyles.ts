@@ -50,6 +50,7 @@ ul {
 
 a {
   text-decoration: none;
+  cursor: pointer;
 }
 
 img {

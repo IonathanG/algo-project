@@ -14,6 +14,8 @@ export const LightTheme = {
   color_Font_Tertiary: "#000000",
   color_Font_SubMenu: "#90A3BF",
 
+  color_CTA: "#7c5cfc",
+
   //Top Header
   background_Header: "rgb(255,255,255)",
 
