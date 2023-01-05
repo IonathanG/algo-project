@@ -50,7 +50,7 @@ const Input = () => {
 
   return (
     <div style={{ position: "relative" }}>
-      <Icon src="src/assets/Icon/search-normal.svg" alt="search-icon" />
+      <Icon src="/assets/Icon/search-normal.svg" alt="search-icon" />
       <InputField
         name="search"
         type="text"

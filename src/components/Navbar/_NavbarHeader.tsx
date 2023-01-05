@@ -27,7 +27,7 @@ const Logo = styled.img`
 const NavbarHeader = () => {
   return (
     <Header>
-      <Logo src="src/assets/Image/Logo/Logo.png" alt="logo" />
+      <Logo src="/assets/Image/Logo/Logo.png" alt="logo" />
       <span>filerrrr.</span>
     </Header>
   );

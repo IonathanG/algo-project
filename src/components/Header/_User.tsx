@@ -60,14 +60,14 @@ const User = () => {
   return (
     <Container>
       <IconContainer>
-        <BellIcon src="src/assets/Icon/Cloche.svg" alt="bell-icon" />
+        <BellIcon src="/assets/Icon/Cloche.svg" alt="bell-icon" />
       </IconContainer>
       <ProfilePicture
-        src="src/assets/Image/Profil-picture/Profile-picture.jpg"
+        src="/assets/Image/Profil-picture/Profile-picture.jpg"
         alt="profile-picture"
       />
       <span>Alexis Audouin</span>
-      <ArrowIcon src="src/assets/Icon/ArrowDown.svg" alt="arrow-icon" />
+      <ArrowIcon src="/assets/Icon/ArrowDown.svg" alt="arrow-icon" />
     </Container>
   );
 };
