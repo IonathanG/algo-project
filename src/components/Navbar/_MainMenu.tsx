@@ -1,6 +1,8 @@
 import * as React from "react";
 import styled from "styled-components";
 import { NavLink } from "react-router-dom";
+import Icon from "../Icon";
+import IconName from "../Icon/model";
 
 const MenuContainer = styled.ul`
   display: flex;
@@ -14,19 +16,28 @@ const MenuItem = styled.li`
   padding: 14px 17px;
   font-weight: 500;
   font-size: 18px;
-  transition: 0.25s ease-in-out;
+
+  a {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+
+    img {
+      z-index: 10;
+    }
+  }
 
   span {
     color: ${({ theme }) => theme.color_Font_Main} !important;
     z-index: 10 !important;
     position: relative;
+    transition: all 0.3s cubic-bezier(0.445, 0.05, 0.55, 0.95);
   }
 
   &::after {
     content: "";
     background-color: ${({ theme }) => theme.color_CTA};
     border-radius: 10px;
-    /* mix-blend-mode: exclusion; */
     width: 0;
     height: 100%;
     position: absolute;
@@ -38,6 +49,10 @@ const MenuItem = styled.li`
   &:hover {
     &::after {
       width: 100%;
+    }
+
+    img {
+      filter: brightness(300%);
     }
 
     span {
@@ -55,10 +70,23 @@ interface IMenuItem {
 
 const MainMenu: React.FC = () => {
   const menu: IMenuItem[] = [
-    { label: "File manager", slug: "file-manager", link: "/" },
-    { label: "Project", slug: "project", link: "/" },
-    { label: "People & Teams", slug: "people-&-teams", link: "/" },
+    { label: "File manager", slug: "document-text", link: "/" },
+    { label: "Project", slug: "plugins", link: "/" },
+    { label: "People & Teams", slug: "message", link: "/" },
   ];
+
+  const pickIcon = (slug: string) => {
+    switch (slug) {
+      case "document-text":
+        return IconName.documentText;
+      case "plugins":
+        return IconName.plugins;
+      case "message":
+        return IconName.message;
+      default:
+        return IconName.plugins;
+    }
+  };
 
   return (
     <li>
@@ -67,6 +95,7 @@ const MainMenu: React.FC = () => {
         {menu.map((item) => (
           <MenuItem key={item.slug}>
             <NavLink to={`${item.link}`} style={{ textDecoration: "none" }}>
+              <Icon name={pickIcon(item.slug)} />
               <span>{item.label}</span>
             </NavLink>
           </MenuItem>
