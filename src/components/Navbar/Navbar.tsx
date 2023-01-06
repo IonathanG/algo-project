@@ -15,6 +15,7 @@ const NavbarContainer = styled.nav`
 
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   gap: 20px;
   /* position: relative; */
 
@@ -25,8 +26,10 @@ const NavbarContainer = styled.nav`
 const Navbar = () => {
   return (
     <NavbarContainer>
-      <NavbarHeader />
-      <NavigationMenu />
+      <div>
+        <NavbarHeader />
+        <NavigationMenu />
+      </div>
       <Credits />
     </NavbarContainer>
   );

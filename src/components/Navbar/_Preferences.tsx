@@ -62,25 +62,56 @@ const MenuItem = styled.li`
   }
 `;
 
-const ThemeContainer = styled.div`
+const ThemeContainer = styled.div<IIsLightTheme>`
+  position: absolute;
+  cursor: auto;
   z-index: 20;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 15px;
-  margin-left: 8px;
+  gap: 10px;
+  margin-left: 150px;
   width: 68px;
   height: 34px;
   border-radius: 25px;
   background: #f6f7f9;
 
-  img:nth-child(1) {
-    width: 18px;
-    height: 18px;
+  div {
+    cursor: pointer;
+    transition: 0.2s ease-in-out;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
   }
-  img:nth-child(2) {
-    width: 14px;
-    height: 14px;
+
+  div:nth-child(1) {
+    background-color: ${(props) =>
+      props.isLightTheme ? props.theme.color_CTA : ""};
+
+    img {
+      width: 18px;
+      height: 18px;
+      filter: ${(props) =>
+        props.isLightTheme
+          ? "invert(100%) sepia(8%) saturate(1187%) hue-rotate(194deg) brightness(112%) contrast(101%)"
+          : ""};
+    }
+  }
+
+  div:nth-child(2) {
+    background-color: ${(props) =>
+      !props.isLightTheme ? props.theme.color_CTA : ""};
+
+    img {
+      width: 14px;
+      height: 14px;
+      filter: ${(props) =>
+        !props.isLightTheme
+          ? "invert(100%) sepia(8%) saturate(1187%) hue-rotate(194deg) brightness(112%) contrast(101%)"
+          : ""};
+    }
   }
 `;
 
@@ -90,7 +121,13 @@ interface IMenuItem {
   link: string;
 }
 
+interface IIsLightTheme {
+  isLightTheme: boolean;
+}
+
 const Preferences: React.FC = () => {
+  const [isLightTheme, setIsLightTheme] = React.useState<boolean>(true);
+
   const menu: IMenuItem[] = [
     { label: "Settings", slug: "setting", link: "/" },
     { label: "Help & Center", slug: "info-circle", link: "/" },
@@ -120,17 +157,13 @@ const Preferences: React.FC = () => {
               <Icon name={pickIcon(item.slug)} />
               <span>{item.label}</span>
               {item.slug === "briefcase" ? (
-                <ThemeContainer>
-                  <img
-                    onClick={() => console.log("light")}
-                    src="/assets/Icon/light.svg"
-                    alt="light-icon"
-                  />
-                  <img
-                    onClick={() => console.log("dark")}
-                    src="/assets/Icon/dark.svg"
-                    alt="dark-icon"
-                  />
+                <ThemeContainer isLightTheme={isLightTheme}>
+                  <div onClick={() => setIsLightTheme(true)}>
+                    <img src="/assets/Icon/light.svg" alt="light-icon" />
+                  </div>
+                  <div onClick={() => setIsLightTheme(false)}>
+                    <img src="/assets/Icon/dark.svg" alt="dark-icon" />
+                  </div>
                 </ThemeContainer>
               ) : null}
             </NavLink>

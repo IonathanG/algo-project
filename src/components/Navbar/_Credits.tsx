@@ -1,9 +1,7 @@
 import styled from "styled-components";
 
 const Container = styled.span`
-  position: absolute;
-  bottom: 31px;
-  left: 34px;
+  margin-left: 16px;
 
   font-family: "Plus Jakarta Sans", sans-serif;
   font-style: normal;
