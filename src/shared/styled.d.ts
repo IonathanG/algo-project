@@ -8,7 +8,6 @@ declare module "styled-components" {
     // Main Section
     background_MainSection: string;
     background_Secondary: string;
-
     boxShadow_Main: string;
 
     // Font Color
@@ -16,34 +15,10 @@ declare module "styled-components" {
     color_Font_Secondary: string;
     color_Font_Tertiary: string;
     color_Font_SubMenu: string;
-
     color_CTA: string;
 
-    //Top Header
-    background_Header: string;
-
-    // Input
-    border_Input: string;
-
-    // Buttons
-    background_ButtonBasic: string;
-    background_ButtonBasic_Hover: string;
-    color_ButtonBasic: string;
-    border_Button: string;
-
-    // Side Navbar
-    color_NavItem: string;
-    color_active_NavItem: string;
-    background_active_NavItem: string;
-    color_SubNavItem: string;
-    boxShadow_Navbar: string;
-
-    // Tables
-    hover_Table: string;
-    color_Font_Arrow: string;
-
-    // Card
-    card_subTitle: string;
+    // Border
+    color_Border: string;
 
     // Pop Up
     background_PopUp: string;

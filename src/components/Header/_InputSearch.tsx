@@ -6,7 +6,7 @@ const InputField = styled.input`
   height: 44px;
   padding-left: 72px;
 
-  border: 1px solid #c3d4e9;
+  border: 1px solid ${({ theme }) => theme.color_Border};
   border-radius: 70px;
 
   font-family: "Plus Jakarta Sans", sans-serif;

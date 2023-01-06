@@ -19,3 +19,15 @@ export const SectionMain = styled.section`
   transition: 0.3s ease;
   display: flex;
 `;
+
+export const Card = styled.div`
+  border-radius: 10px;
+  background-color: ${({ theme }) => theme.background_Secondary};
+
+  h2 {
+    margin: 0;
+    padding: 0;
+    font-size: 16px;
+    font-weight: 600;
+  }
+`;
