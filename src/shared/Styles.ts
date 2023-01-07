@@ -23,6 +23,7 @@ export const SectionMain = styled.section`
 export const Card = styled.div`
   border-radius: 10px;
   background-color: ${({ theme }) => theme.background_Secondary};
+  overflow: hidden;
 
   h2 {
     margin: 0;
