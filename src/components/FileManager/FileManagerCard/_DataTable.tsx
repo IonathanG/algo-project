@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from "react";
+import React, { useState, useMemo, useEffect } from "react";
 import styled from "styled-components";
 import IconExtra from "../../Icon/IconExtra";
 import IconExtension from "../../Icon/IconExtension";
@@ -63,14 +63,16 @@ const ArrowIcon = styled.img`
   margin: -4px 0px 0px 12px;
 `;
 
-const ExtensionIcon = styled.img``;
-
 const Table: React.FC<TableProps> = (props) => {
-  const { data } = props;
+  const { data, filter } = props;
   const [sortBy, setSortBy] = useState<keyof TableProps["data"][0] | null>(
     null
   );
   const [sortDirection, setSortDirection] = useState<"asc" | "desc">("asc");
+
+  useEffect(() => {
+    console.log(filter);
+  }, [filter]);
 
   const handleSort = (key: keyof TableProps["data"][0]) => {
     if (sortBy === key) {
@@ -148,32 +150,34 @@ const Table: React.FC<TableProps> = (props) => {
         </tr>
       </TableHead>
       <TableBody>
-        {sortedData.map((item) => (
-          <tr key={item.files.name}>
-            <td>
-              <div className="nameContainer">
-                <IconExtension name={pickIcon(item.files.extension)} />
-                {item.files.name}.{item.files.extension}
-              </div>
-            </td>
-            <td>{item.date}</td>
-            <td>{item.size}</td>
-            <td>
-              <div className="statusContainer">
-                <Icon name={pickIcon(item.status)} />
-                <span>{item.status}</span>
-              </div>
-            </td>
-            <td>
-              <div className="star">
-                <IconFavorite isFavorite={item.favorite} />
-              </div>
-            </td>
-            <td>
-              <IconExtra />
-            </td>
-          </tr>
-        ))}
+        {sortedData
+          .filter((item) => (filter ? item.files.extension === filter : item))
+          .map((item) => (
+            <tr key={item.files.name}>
+              <td>
+                <div className="nameContainer">
+                  <IconExtension name={pickIcon(item.files.extension)} />
+                  {item.files.name}.{item.files.extension}
+                </div>
+              </td>
+              <td>{item.date}</td>
+              <td>{item.size}</td>
+              <td>
+                <div className="statusContainer">
+                  <Icon name={pickIcon(item.status)} />
+                  <span>{item.status}</span>
+                </div>
+              </td>
+              <td>
+                <div className="star">
+                  <IconFavorite isFavorite={item.favorite} />
+                </div>
+              </td>
+              <td>
+                <IconExtra />
+              </td>
+            </tr>
+          ))}
       </TableBody>
     </TableContainer>
   );

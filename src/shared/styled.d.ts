@@ -20,6 +20,9 @@ declare module "styled-components" {
     // Border
     color_Border: string;
 
+    // Blue Hover
+    background_HoverBlue: string;
+
     // Pop Up
     background_PopUp: string;
   }

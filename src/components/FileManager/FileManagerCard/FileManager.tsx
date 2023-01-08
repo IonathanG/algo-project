@@ -3,6 +3,7 @@ import styled from "styled-components";
 import AddIcon from "../../Icon/AddIcon";
 import Table from "./_DataTable";
 import { tableData } from "../../../data/tableData";
+import { useState } from "react";
 
 const FileManagerCard = styled(Card)`
   min-height: 500px;
@@ -21,18 +22,135 @@ const Right = styled.div`
   gap: 20px;
 `;
 
+const DropdownContainer = styled.div<{ isOpen: boolean }>`
+  position: relative;
+  width: 173px;
+  height: 38px;
+  border: 1px solid ${({ theme }) => theme.color_Border};
+  border-radius: 6px;
+  border-bottom-left-radius: ${(props) => (props.isOpen ? "0px" : "6px")};
+  border-bottom-right-radius: ${(props) => (props.isOpen ? "0px" : "6px")};
+`;
+
+const DropdownButton = styled.button<{ isOpen: boolean }>`
+  position: relative;
+  display: block;
+  width: 100%;
+  font-size: 12px !important;
+  text-align: left;
+  cursor: pointer;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  padding: 11px 16px;
+  background-color: ${({ theme }) => theme.background_Secondary} !important;
+`;
+
+const ArrowIcon = styled.img<{ isOpen: boolean }>`
+  position: absolute;
+  right: 5px;
+  top: 15px;
+  cursor: pointer;
+  width: 14px;
+  height: 6px;
+  transform: ${(props) => (props.isOpen ? "rotate(180deg)" : "")};
+`;
+
+const DropdownMenu = styled.div`
+  width: 173px;
+  position: absolute;
+  top: 100%;
+  left: -1px;
+  z-index: 20;
+  display: none;
+  background-color: ${({ theme }) => theme.background_Secondary} !important;
+  box-shadow: 0px 4px 30px rgba(0, 0, 0, 0.12);
+  border: 1px solid ${({ theme }) => theme.color_Border};
+  border-top: none;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
+`;
+
+const DropdownOption = styled.div`
+  font-size: 12px;
+  font-weight: 500;
+  padding: 8px;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+
+  &:hover {
+    background-color: ${({ theme }) => theme.background_HoverBlue};
+    color: ${({ theme }) => theme.background_Secondary};
+  }
+`;
+
+interface Option {
+  value: string;
+  label: string;
+}
+
+const options: Option[] = [
+  { value: "psd", label: "Photoshop" },
+  { value: "pr", label: "Premiere Pro" },
+  { value: "ai", label: "Illustrator" },
+  { value: "fig", label: "Figma" },
+  { value: "sketch", label: "Sketch" },
+  { value: "id", label: "InDesign" },
+];
+
 const FileManager = () => {
+  const [selectedOption, setSelectedOption] = useState<
+    Option | null | undefined
+  >(null);
+  const [isOpen, setIsOpen] = useState(false);
+
+  const handleToggle = () => {
+    setIsOpen(!isOpen);
+  };
+
+  const handleOptionClick = (option: { value: string; label: string }) => {
+    setSelectedOption(option);
+    setIsOpen(false);
+  };
+
   return (
     <FileManagerCard>
       <Header>
         <h2>File manager</h2>
         <Right>
           <AddIcon />
-          <span>Sort by</span>
+
+          <DropdownContainer isOpen={isOpen}>
+            <DropdownButton isOpen={isOpen} onClick={handleToggle}>
+              <span>
+                {`Sort by${
+                  selectedOption ? ` : ${selectedOption.label}` : "..."
+                }`}
+              </span>
+              <ArrowIcon
+                isOpen={isOpen}
+                src="/assets/Icon/ArrowDown.svg"
+                alt="arrow-icon"
+              />
+            </DropdownButton>
+            <DropdownMenu style={{ display: isOpen ? "block" : "none" }}>
+              {options.map((option: Option) => (
+                <DropdownOption
+                  key={option.value}
+                  onClick={() => handleOptionClick(option)}
+                >
+                  {option.label}
+                </DropdownOption>
+              ))}
+            </DropdownMenu>
+          </DropdownContainer>
           <span>Date</span>
         </Right>
       </Header>
-      <Table data={tableData} />
+      <Table data={tableData} filter={selectedOption?.value} />
     </FileManagerCard>
   );
 };

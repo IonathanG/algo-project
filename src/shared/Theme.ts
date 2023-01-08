@@ -17,6 +17,9 @@ export const LightTheme = {
   // Border
   color_Border: "#c3d4e9",
 
+  // Blue Hover
+  background_HoverBlue: "#5B93FF",
+
   // Pop Up
   background_PopUp: "rgb(23,25,28)",
 };
