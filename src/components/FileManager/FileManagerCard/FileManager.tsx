@@ -4,6 +4,7 @@ import AddIcon from "../../Icon/AddIcon";
 import Table from "./_DataTable";
 import { tableData } from "../../../data/tableData";
 import { useState } from "react";
+import DatePicker from "./_DatePicker";
 
 const FileManagerCard = styled(Card)`
   min-height: 500px;
@@ -71,7 +72,8 @@ const DropdownMenu = styled.div`
   border-bottom-right-radius: 6px;
 `;
 
-const DropdownOption = styled.div`
+const DropdownOption = styled.div<{ isSelected: boolean }>`
+  position: relative;
   font-size: 12px;
   font-weight: 500;
   padding: 8px;
@@ -79,11 +81,45 @@ const DropdownOption = styled.div`
   display: flex;
   align-items: center;
   cursor: pointer;
-  transition: 0.2s ease;
+  transition: 0.4s ease;
+  animation: ${(props) => (props.isSelected ? "optionAnim 0.2s" : "")};
+
+  @keyframes optionAnim {
+    0% {
+      color: red;
+    }
+    100% {
+      color: blue;
+    }
+  }
 
   &:hover {
     background-color: ${({ theme }) => theme.background_HoverBlue};
     color: ${({ theme }) => theme.background_Secondary};
+  }
+
+  opacity: ${(props) => (props.isSelected ? "0" : "1")};
+  padding: ${(props) => (props.isSelected ? "0" : "8px")};
+  height: ${(props) => (props.isSelected ? "0" : "34px")};
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0px;
+    left: -50%;
+    background-color: #0000001f;
+    height: 34px;
+    width: 50%;
+  }
+
+  &::after {
+    content: "";
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    background-color: #0000001f;
+    height: 34px;
+    width: 50%;
   }
 `;
 
@@ -106,6 +142,7 @@ const FileManager = () => {
     Option | null | undefined
   >(null);
   const [isOpen, setIsOpen] = useState(false);
+  const [animationTrigger, setAnimationTrigger] = useState<Option | null>(null);
 
   const handleToggle = () => {
     setIsOpen(!isOpen);
@@ -113,7 +150,8 @@ const FileManager = () => {
 
   const handleOptionClick = (option: { value: string; label: string }) => {
     setSelectedOption(option);
-    setIsOpen(false);
+    setAnimationTrigger(option);
+    // setIsOpen(false);
   };
 
   return (
@@ -140,6 +178,7 @@ const FileManager = () => {
               {options.map((option: Option) => (
                 <DropdownOption
                   key={option.value}
+                  isSelected={option === selectedOption ? true : false}
                   onClick={() => handleOptionClick(option)}
                 >
                   {option.label}
@@ -147,7 +186,7 @@ const FileManager = () => {
               ))}
             </DropdownMenu>
           </DropdownContainer>
-          <span>Date</span>
+          <DatePicker />
         </Right>
       </Header>
       <Table data={tableData} filter={selectedOption?.value} />
